@@ -35,6 +35,19 @@ public class AtividadeService {
         return new AtividadeDTO(entity);
     }
 
+    @Transactional
+    public AtividadeDTO update(Integer id, AtividadeDTO dto) {
+        Atividade entity = repository.getReferenceById(id);
+        saveEntity(entity, dto);
+        entity = repository.save(entity);
+        return new AtividadeDTO(entity);
+    }
+
+    @Transactional
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
+
     public void saveEntity(Atividade entity, AtividadeDTO dto) {
         entity.setNome(dto.getNome());
         entity.setDescricao(dto.getDescricao());

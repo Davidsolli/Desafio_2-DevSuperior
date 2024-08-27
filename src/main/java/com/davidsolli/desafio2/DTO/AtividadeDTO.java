@@ -2,7 +2,6 @@ package com.davidsolli.desafio2.DTO;
 
 
 import com.davidsolli.desafio2.entities.Atividade;
-import com.davidsolli.desafio2.entities.Categoria;
 
 public class AtividadeDTO {
 
@@ -11,7 +10,7 @@ public class AtividadeDTO {
     private String descricao;
     private Double preco;
 
-    public AtividadeDTO(Integer id, String nome, String descricao, Double preco, Categoria categoria) {
+    public AtividadeDTO(Integer id, String nome, String descricao, Double preco) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
