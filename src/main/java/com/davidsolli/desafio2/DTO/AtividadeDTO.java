@@ -2,12 +2,17 @@ package com.davidsolli.desafio2.DTO;
 
 
 import com.davidsolli.desafio2.entities.Atividade;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 
 public class AtividadeDTO {
 
     private Integer id;
+    @NotBlank(message = "Campo requerido!")
     private String nome;
+    @NotBlank(message = "Campo requerido!")
     private String descricao;
+    @Positive(message = "O preço deve ser positivo!")
     private Double preco;
 
     public AtividadeDTO(Integer id, String nome, String descricao, Double preco) {

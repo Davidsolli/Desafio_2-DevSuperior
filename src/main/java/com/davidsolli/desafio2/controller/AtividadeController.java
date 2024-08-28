@@ -2,6 +2,7 @@ package com.davidsolli.desafio2.controller;
 
 import com.davidsolli.desafio2.DTO.AtividadeDTO;
 import com.davidsolli.desafio2.services.AtividadeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,14 +32,14 @@ public class AtividadeController {
     }
 
     @PostMapping
-    public ResponseEntity<AtividadeDTO> insert(@RequestBody AtividadeDTO dto) {
+    public ResponseEntity<AtividadeDTO> insert(@Valid @RequestBody AtividadeDTO dto) {
         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<AtividadeDTO> update(@PathVariable Integer id, @RequestBody AtividadeDTO dto) {
+    public ResponseEntity<AtividadeDTO> update(@PathVariable Integer id, @Valid @RequestBody AtividadeDTO dto) {
         dto = service.update(id, dto);
         return ResponseEntity.ok(dto);
     }
